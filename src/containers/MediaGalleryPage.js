@@ -3,7 +3,7 @@
  */
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { selecImageAction, searchMediaAction, selectVideoAction } from '../actions/mediaActions';
+import { selectImageAction, searchMediaAction, selectVideoAction } from '../actions/mediaActions';
 import PhotoPage from '../components/PhotoPage';
 import VideoPage from '../components/VideoPage';
 import '../styles/style.css';
@@ -25,7 +25,7 @@ class MediaGalleryPage extends Component {
 
 	// Dispatches *selectImageAction* when any image is clicked
 	handleSelectImage(selectedImage) {
-		this.props.dispatch(selecImageAction(selectedImage));
+		this.props.dispatch(selectImageAction(selectedImage));
 	}
 
 	// Dispatches *selectVideoAction* when any video is clicked
