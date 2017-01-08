@@ -25,7 +25,7 @@ class MediaGalleryPage extends Component {
 
 	// Dispatches *selectImageAction* when any image is clicked
 	handleSelectImage(selectedImage) {
-		this.props.dispatch(selectImageAction(selectedImage));
+			this.props.dispatch(selectImageAction(selectedImage));
 	}
 
 	// Dispatches *selectVideoAction* when any video is clicked
@@ -45,6 +45,9 @@ class MediaGalleryPage extends Component {
 
 	render() {
 		const { images, selectedImage, videos, selectedVideo } = this.props;
+
+		console.log('imgs: ', images);
+		console.log('selectedImage:', selectedImage);
 		return (
 			<div className="container-fluid">
 				{images ? <div>

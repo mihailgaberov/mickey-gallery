@@ -27,7 +27,7 @@ const VideosPage = ({ videos, onHandleSelectVideo, selectedVideo }) => (
 // Define PropTypes
 VideosPage.propTypes = {
 	videos: PropTypes.array.isRequired,
-	selectedVideo: PropTypes.object.isRequired,
+	selectedVideo: PropTypes.object,
 	onHandleSelectVideo: PropTypes.func.isRequired
 };
 
