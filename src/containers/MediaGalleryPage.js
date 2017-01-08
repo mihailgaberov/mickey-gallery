@@ -17,7 +17,7 @@ class MediaGalleryPage extends Component {
 	render() {
 		console.log(this.props.images, 'Images');
 		console.log(this.props.videos, 'Videos');
-		console.log(this.props.selecteImage, 'SelectedImage');
+		console.log(this.props.selectedImage, 'SelectedImage');
 		console.log(this.props.selectedVideo, 'SelectedVideo');
 		return (<div> </div>)
 	}
