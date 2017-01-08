@@ -45,9 +45,6 @@ class MediaGalleryPage extends Component {
 
 	render() {
 		const { images, selectedImage, videos, selectedVideo } = this.props;
-
-		console.log('imgs: ', images);
-		console.log('selectedImage:', selectedImage);
 		return (
 			<div className="container-fluid">
 				{images ? <div>
