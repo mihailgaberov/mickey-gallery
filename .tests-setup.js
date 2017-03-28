@@ -5,7 +5,7 @@ require('babel-core/register')();
 
 const jsdom = require('jsdom').jsdom;
 
-const exposedProperties = ['window', 'navigator', 'document'];
+let exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
 global.window = document.defaultView;
