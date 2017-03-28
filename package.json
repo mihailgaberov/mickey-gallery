@@ -30,6 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "clear && _mocha --compilers css:ignore-styles ./.tests-setup.js \"test\" --recursive",
+    "test:watch": "npm run test -- --watch",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
     "deploy": "npm install -g pushstate-server && pushstate-server build"

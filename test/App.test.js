@@ -15,7 +15,7 @@ describe('Test App', () => {
     expect(wrapper.find('div').hasClass('container-fluid')).toBe(true);
   });
 
-  xit('should render children', () => {
+  it('should render children', () => {
     expect(typeof wrapper.props().children).toBe('object');
   });
 });
