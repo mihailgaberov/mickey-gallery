@@ -3,15 +3,13 @@
  */
 import React, { PropTypes } from 'react';
 
-// First, we extract images, onHandleSelectImage, and selectedImage from
-// props using ES6 destructuring assignment and then render.
 const PhotosPage = ({ images, onHandleSelectImage, selectedImage }) => (
 	<div className="col-md-6">
-		<h2> Images </h2>
+		<h2>Images</h2>
 		{selectedImage ?
 			<div className="selected-image">
 				<div id={selectedImage.id}>
-					<h6>{selectedImage.title}</h6>
+					<h6 className="title">{selectedImage.title}</h6>
 					<img src={selectedImage.mediaUrl} alt={selectedImage.title} />
 				</div>
 			</div> : ''}
@@ -25,7 +23,6 @@ const PhotosPage = ({ images, onHandleSelectImage, selectedImage }) => (
 	</div>
 );
 
-// Define PropTypes
 PhotosPage.propTypes = {
 	images: PropTypes.array.isRequired,
 	selectedImage: PropTypes.object,

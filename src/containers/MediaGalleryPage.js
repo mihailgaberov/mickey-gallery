@@ -4,7 +4,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { selectImageAction, searchMediaAction, selectVideoAction } from '../actions/mediaActions';
-import PhotoPage from '../components/PhotoPage';
+import PhotoPage from '../components/PhotosPage';
 import VideoPage from '../components/VideoPage';
 import '../styles/style.css';
 
