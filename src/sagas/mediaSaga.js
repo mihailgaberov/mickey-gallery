@@ -8,7 +8,7 @@ import * as types from '../constants/actionTypes';
 // Responsible for searching media library, making calls to the API
 // and instructing the redux-saga middleware on the next line of action,
 // for success or failure operation.
-export function* searchMediaSaga({ payload }) {
+export default function* searchMediaSaga({ payload }) {
 	try {
 		const videos = yield call(shutterStockVideos, payload);
 		const images = yield call(flickrImages, payload);
