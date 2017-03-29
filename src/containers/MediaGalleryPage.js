@@ -8,8 +8,7 @@ import PhotoPage from '../components/PhotoPage';
 import VideoPage from '../components/VideoPage';
 import '../styles/style.css';
 
-// MediaGalleryPage Component
-class MediaGalleryPage extends Component {
+export class MediaGalleryPage extends Component {
 	constructor() {
 		super();
 		this.handleSearch = this.handleSearch.bind(this);
@@ -17,24 +16,18 @@ class MediaGalleryPage extends Component {
 		this.handleSelectVideo = this.handleSelectVideo.bind(this);
 	}
 
-
-	// Dispatches *searchMediaAction*  immediately after initial rendering.
 	componentDidMount() {
 		this.props.dispatch(searchMediaAction('rain'));
 	}
 
-	// Dispatches *selectImageAction* when any image is clicked
 	handleSelectImage(selectedImage) {
 			this.props.dispatch(selectImageAction(selectedImage));
 	}
 
-	// Dispatches *selectVideoAction* when any video is clicked
 	handleSelectVideo(selectedVideo) {
 		this.props.dispatch(selectVideoAction(selectedVideo));
 	}
 
-	// Dispatches *searchMediaAction* with query param.
-	// We ensure action is dispatched to the store only if query param is provided.
 	handleSearch(event) {
 		event.preventDefault();
 		if (this.query !== null) {
@@ -76,7 +69,6 @@ class MediaGalleryPage extends Component {
 	}
 }
 
-// Define PropTypes
 MediaGalleryPage.propTypes = {
 	images: PropTypes.array,
 	selectedImage: PropTypes.object,
@@ -85,8 +77,6 @@ MediaGalleryPage.propTypes = {
 	dispatch: PropTypes.func.isRequired
 };
 
-// Subscribe component to redux store and merge the state into
-// component's props
 const mapStateToProps = ({ images, videos }) => ({
 	images: images[0],
 	selectedImage: images.selectedImage,
@@ -94,5 +84,4 @@ const mapStateToProps = ({ images, videos }) => ({
 	selectedVideo: videos.selectedVideo
 });
 
-// connect method from react-router connects the component with redux store
 export default connect(mapStateToProps)(MediaGalleryPage);
