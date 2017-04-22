@@ -30,7 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "clear && _mocha --compilers css:ignore-styles ./.tests-setup.js \"test\" --recursive",
+    "test:unix": "clear && _mocha --compilers css:ignore-styles ./.tests-setup.js \"test\" --recursive",
+    "test": "cls && _mocha --compilers css:ignore-styles ./.tests-setup.js \"test\" --recursive",
     "test:watch": "npm run test -- --watch",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
