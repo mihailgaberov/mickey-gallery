@@ -2,9 +2,10 @@
 .idea
 # dependencies
 node_modules
-/build
+build
 
 # misc
 .DS_Store
 .env
 npm-debug.log
+yarn-error.log
