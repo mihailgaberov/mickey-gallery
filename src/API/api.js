@@ -3,6 +3,8 @@
  */
 
 const REACT_APP_FLICKR_API_KEY = process.env.REACT_APP_FLICKR_API_KEY
+const REACT_APP_FLICKR_USER_ID = process.env.REACT_APP_FLICKR_USER_ID
+const REACT_APP_FLICKR_PHOTOSET_ID = process.env.REACT_APP_FLICKR_PHOTOSET_ID
 const SHUTTER_CLIENT_ID = '3434a56d8702085b9226'
 const SHUTTER_CLIENT_SECRET = '7698001661a2b347c2017dfd50aebb2519eda578'
 
@@ -47,8 +49,8 @@ export const flickrImages = () => {
 	&format=json
 	&nojsoncallback=1
 	&per_page=10
-	&user_id=151365639@N02
-	&photoset_id=72157687093937245
+	&user_id=${REACT_APP_FLICKR_USER_ID}
+	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}
 	&privacy_filter=5`;
 
   return fetch(FLICKR_API_ENDPOINT)
