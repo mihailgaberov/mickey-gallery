@@ -2,7 +2,7 @@
  * Created by Mihail on 1/7/2017.
  */
 
-const FLICKR_API_KEY = process.env.FLICKR_API_KEY
+const REACT_APP_FLICKR_API_KEY = process.env.REACT_APP_FLICKR_API_KEY
 const SHUTTER_CLIENT_ID = '3434a56d8702085b9226'
 const SHUTTER_CLIENT_SECRET = '7698001661a2b347c2017dfd50aebb2519eda578'
 
@@ -43,7 +43,7 @@ export const shutterStockVideos = (searchQuery) => {
  */
 export const flickrImages = () => {
   const FLICKR_API_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos
-	&api_key=${FLICKR_API_KEY}
+	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
 	&per_page=10
