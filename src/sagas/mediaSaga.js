@@ -2,13 +2,13 @@
  * Created by Mihail on 1/7/2017.
  */
 import { put, call, all } from 'redux-saga/effects'
-import { flickrImages, shutterStockVideos } from '../API/api'
+import { flickrImages, flickrVideos } from '../API/api'
 import * as types from '../constants/actionTypes'
 
 export default function* searchMediaSaga({payload}) {
   try {
     const {videos, images} = yield all({
-      videos: call(shutterStockVideos, payload),
+      videos: call(flickrVideos, payload),
       images: call(flickrImages, payload)
     })
     yield all(
