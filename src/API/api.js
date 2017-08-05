@@ -48,6 +48,6 @@ export const flickrVideos = () => {
         id,
         title,
         mediaUrl: `https://www.flickr.com/photos/${REACT_APP_FLICKR_USER_ID}/${id}/play/site/${secret}`
-    }))
+      }))
     })
 }
