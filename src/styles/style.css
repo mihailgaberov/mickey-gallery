@@ -17,7 +17,7 @@ body {
 }
 
 .selected-image img, .select-video video {
-    width: 100%;
+    max-width: 100%;
     height: 450px;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 .image-thumbnail img, .video-thumbnail video {
-    width: 70px;
+    width: auto;
     height: 70px;
     padding: 1px;
     border: 1px solid grey;
