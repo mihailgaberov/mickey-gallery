@@ -13,7 +13,7 @@ export default function* searchMediaSaga({payload}) {
     })
     yield all(
       [
-        put({type: types.SHUTTER_VIDEOS_SUCCESS, videos}),
+        put({type: types.FLICKR_VIDEOS_SUCCESS, videos}),
         put({type: types.SELECTED_VIDEO, video: videos[0]}),
         put({type: types.FLICKR_IMAGES_SUCCESS, images}),
         put({type: types.SELECTED_IMAGE, image: images[0]})

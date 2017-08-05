@@ -18,7 +18,7 @@ describe('Test for Video Reducer', () => {
   });
 
   it('should return the all videos in the stores tree', () => {
-    const testAction = { type: types.SHUTTER_VIDEOS_SUCCESS, videos: 'www.test.com/1.mp4' };
+    const testAction = { type: types.FLICKR_VIDEOS_SUCCESS, videos: 'www.test.com/1.mp4' };
     expect(videoReducer(initialState, testAction)).toEqual([ 'www.test.com/1.mp4' ]);
   });
 
