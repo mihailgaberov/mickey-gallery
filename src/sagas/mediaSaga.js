@@ -5,11 +5,11 @@ import { put, call, all } from 'redux-saga/effects'
 import { flickrImages, flickrVideos } from '../API/api'
 import * as types from '../constants/actionTypes'
 
-export default function* searchMediaSaga({payload}) {
+export default function* searchMediaSaga() {
   try {
     const {videos, images} = yield all({
-      videos: call(flickrVideos, payload),
-      images: call(flickrImages, payload)
+      videos: call(flickrVideos),
+      images: call(flickrImages)
     })
     yield all(
       [
