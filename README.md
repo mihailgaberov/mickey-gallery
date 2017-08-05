@@ -1,5 +1,5 @@
 # Mickey's Gallery
-This repo contains the implementation of a media gallery app build with React, Redux and Saga, using Flickr API.
+This repo contains an implementation of a media gallery app build with React, Redux and Saga, using Flickr API.
 
 ## Demo
 https://mickey-gallery.herokuapp.com/
