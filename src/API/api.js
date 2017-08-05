@@ -14,8 +14,7 @@ export const flickrImages = () => {
 	&nojsoncallback=1
 	&per_page=10
 	&user_id=${REACT_APP_FLICKR_USER_ID}
-	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}
-	&privacy_filter=5`
+	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}`
 
   return fetch(FLICKR_API_ENDPOINT)
     .then(response => {
