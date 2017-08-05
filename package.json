@@ -1,7 +1,7 @@
 {
   "name": "mickey-gallery",
   "version": "0.1.1",
-  "author": "Mihail Gaberov <mihail.gaberov@gmail.com>",
+  "author": "Mihail Gaberov",
   "private": true,
   "devDependencies": {
     "babel-core": "^6.24.0",
