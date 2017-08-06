@@ -12,7 +12,7 @@ export const flickrImages = () => {
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
-	&per_page=10
+	&per_page=1000
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}`
 
@@ -34,7 +34,7 @@ export const flickrVideos = () => {
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
-	&per_page=10
+	&per_page=100
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_VIDEOSET_ID}`
 
