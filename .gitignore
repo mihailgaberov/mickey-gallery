@@ -2,7 +2,6 @@
 .idea
 # dependencies
 node_modules
-build
 
 # misc
 .DS_Store
