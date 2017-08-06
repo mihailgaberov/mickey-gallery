@@ -23,7 +23,7 @@ describe('Test for Action creators', () => {
   });
 
   it('should return searchMediaAction action object', () => {
-    const test = { id: 1, link: 'great.com/1.jpg' };
-    expect(searchMediaAction(test)).toEqual({ type: types.SEARCH_MEDIA_REQUEST, payload: test });
+    const test = { id: 1,  };
+    expect(searchMediaAction(test)).toEqual({ type: types.SEARCH_MEDIA_REQUEST });
   });
 });

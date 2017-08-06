@@ -7,51 +7,32 @@ import PropTypes from 'prop-types'
 import { selectImageAction, searchMediaAction, selectVideoAction } from '../actions/mediaActions'
 import PhotoPage from '../components/PhotosPage'
 import VideoPage from '../components/VideosPage'
-import '../styles/style.css';
+import '../styles/style.css'
 
 export class MediaGalleryPage extends Component {
   constructor() {
-    super();
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleSelectImage = this.handleSelectImage.bind(this);
-    this.handleSelectVideo = this.handleSelectVideo.bind(this);
+    super()
+    this.handleSelectImage = this.handleSelectImage.bind(this)
+    this.handleSelectVideo = this.handleSelectVideo.bind(this)
   }
 
   componentDidMount() {
-    this.props.dispatch(searchMediaAction('rain'));
+    this.props.dispatch(searchMediaAction())
   }
 
   handleSelectImage(selectedImage) {
-    this.props.dispatch(selectImageAction(selectedImage));
+    this.props.dispatch(selectImageAction(selectedImage))
   }
 
   handleSelectVideo(selectedVideo) {
-    this.props.dispatch(selectVideoAction(selectedVideo));
-  }
-
-  handleSearch(event) {
-    event.preventDefault();
-    if (this.query !== null) {
-      this.props.dispatch(searchMediaAction(this.query.value));
-      this.query.value = '';
-    }
+    this.props.dispatch(selectVideoAction(selectedVideo))
   }
 
   render() {
-    const {images, selectedImage, videos, selectedVideo} = this.props;
+    const {images, selectedImage, videos, selectedVideo} = this.props
     return (
       <div className="container-fluid">
         {images ? <div>
-          <input
-            type="text"
-            ref={ref => (this.query = ref)}
-          />
-          <input
-            type="submit"
-            className="btn btn-primary"
-            value="Search Library"
-            onClick={this.handleSearch}
-          />
           <div className="row">
             <PhotoPage
               images={images}
@@ -66,7 +47,7 @@ export class MediaGalleryPage extends Component {
           </div>
         </div> : 'loading ....'}
       </div>
-    );
+    )
   }
 }
 
@@ -76,13 +57,13 @@ MediaGalleryPage.propTypes = {
   videos: PropTypes.array,
   selectedVideo: PropTypes.object,
   dispatch: PropTypes.func.isRequired
-};
+}
 
 const mapStateToProps = ({images, videos}) => ({
   images: images[0],
   selectedImage: images.selectedImage,
   videos: videos[0],
   selectedVideo: videos.selectedVideo
-});
+})
 
-export default connect(mapStateToProps)(MediaGalleryPage);
+export default connect(mapStateToProps)(MediaGalleryPage)

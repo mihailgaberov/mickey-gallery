@@ -1,17 +1,16 @@
 /**
  * Created by Mihail on 1/7/2017.
  */
-import initialState from './initialState';
-import * as types from '../constants/actionTypes';
+import initialState from './initialState'
+import * as types from '../constants/actionTypes'
 
-// Handles image related actions
 export default function (state = initialState.images, action) {
 	switch (action.type) {
 		case types.FLICKR_IMAGES_SUCCESS:
-			return [...state, action.images];
+			return [...state, action.images]
 		case types.SELECTED_IMAGE:
-			return { ...state, selectedImage: action.image };
+			return { ...state, selectedImage: action.image }
 		default:
-			return state;
+			return state
 	}
 }

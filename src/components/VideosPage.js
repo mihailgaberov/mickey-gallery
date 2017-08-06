@@ -21,12 +21,12 @@ const VideosPage = ({videos, onHandleSelectVideo, selectedVideo}) => (
       ))}
     </div>
   </div>
-);
+)
 
 VideosPage.propTypes = {
   videos: PropTypes.array.isRequired,
   selectedVideo: PropTypes.object,
   onHandleSelectVideo: PropTypes.func.isRequired
-};
+}
 
-export default VideosPage;
+export default VideosPage

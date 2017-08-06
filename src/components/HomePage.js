@@ -1,8 +1,8 @@
 /**
  * Created by Mihail on 1/6/2017.
  */
-import React from 'react';
-import { Link } from 'react-router';
+import React from 'react'
+import { Link } from 'react-router'
 
 const HomePage = () => (
 	<div className="jumbotron center">
@@ -13,6 +13,6 @@ const HomePage = () => (
 			</Link>
 		</div>
 	</div>
-);
+)
 
-export default HomePage;
+export default HomePage
