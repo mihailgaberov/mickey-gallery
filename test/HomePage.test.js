@@ -15,6 +15,6 @@ describe('Test for HomePage component', () => {
     expect(wrapper.find('.lead').length).toEqual(1);
     expect(wrapper.find('.btn').length).toEqual(1);
     expect(wrapper.find(Link).length).toEqual(1);
-    expect(wrapper.find(Link).props().to).toEqual('library');
+    expect(wrapper.find(Link).props().to).toEqual('gallery');
   });
 });
