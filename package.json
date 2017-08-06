@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "author": "Mihail Gaberov <mihail.gaberov@gmail.com> (http://mihail-gaberov.eu/)",
   "private": true,
-  "homepage" : "https://github.com/mihailgaberov/mickey-gallery",
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-plugin-transform-runtime": "^6.23.0",
