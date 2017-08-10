@@ -23,7 +23,7 @@ body {
 
 .image-thumbnail, .video-thumbnail {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     overflow: auto;
     overflow-y: hidden;
 }
