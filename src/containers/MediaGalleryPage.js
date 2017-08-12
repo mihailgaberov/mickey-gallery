@@ -33,20 +33,24 @@ export class MediaGalleryPage extends Component {
     const {images, selectedImage, videos, selectedVideo} = this.props
     return (
       <div className="container-fluid">
-        {images ? <div>
-          <div className="row">
-            <PhotoPage
-              images={images}
-              selectedImage={selectedImage}
-              onHandleSelectImage={this.handleSelectImage}
-            />
-            <VideoPage
-              videos={videos}
-              selectedVideo={selectedVideo}
-              onHandleSelectVideo={this.handleSelectVideo}
-            />
-          </div>
-        </div> : <Spinner/>}
+        <div className="row">
+          {images ?
+            <div>
+              <PhotoPage
+                images={images}
+                selectedImage={selectedImage}
+                onHandleSelectImage={this.handleSelectImage}
+              />
+            </div> : <Spinner/>}
+          {videos ?
+            <div>
+              <VideoPage
+                videos={videos}
+                selectedVideo={selectedVideo}
+                onHandleSelectVideo={this.handleSelectVideo}
+              />
+            </div> : <Spinner/>}
+        </div>
       </div>
     )
   }
