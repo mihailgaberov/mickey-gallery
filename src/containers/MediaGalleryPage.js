@@ -8,6 +8,7 @@ import { selectImageAction, searchMediaAction, selectVideoAction } from '../acti
 import PhotoPage from '../components/PhotosPage'
 import VideoPage from '../components/VideosPage'
 import '../styles/style.css'
+import Spinner from '../components/Spinner'
 
 export class MediaGalleryPage extends Component {
   constructor() {
@@ -45,7 +46,7 @@ export class MediaGalleryPage extends Component {
               onHandleSelectVideo={this.handleSelectVideo}
             />
           </div>
-        </div> : 'loading ....'}
+        </div> : <Spinner/>}
       </div>
     )
   }
