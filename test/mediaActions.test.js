@@ -4,7 +4,7 @@
 import expect from 'expect';
 import {
   selectImageAction,
-  searchMediaAction,
+  searchImagesAction,
   selectVideoAction
 } from '../src/actions/mediaActions';
 import * as types from '../src/constants/actionTypes';
@@ -22,8 +22,8 @@ describe('Test for Action creators', () => {
     expect(selectVideoAction(video)).toEqual({ type: types.SELECTED_VIDEO, video });
   });
 
-  it('should return searchMediaAction action object', () => {
+  it('should return searchImagesAction action object', () => {
     const test = { id: 1,  };
-    expect(searchMediaAction(test)).toEqual({ type: types.SEARCH_MEDIA_REQUEST });
+    expect(searchImagesAction(test)).toEqual({ type: types.SEARCH_IMAGES_REQUEST });
   });
 });

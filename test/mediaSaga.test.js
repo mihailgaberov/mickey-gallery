@@ -3,7 +3,7 @@
  */
 import expect from 'expect'
 import { put, call, all } from 'redux-saga/effects'
-import searchMediaSaga from '../src/sagas/mediaSaga'
+import searchMediaSaga from '../src/sagas/imagesSaga'
 import { flickrImages, flickrVideos } from '../src/Api/api'
 
 

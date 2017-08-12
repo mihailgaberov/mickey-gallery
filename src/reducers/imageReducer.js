@@ -9,7 +9,10 @@ export default function (state = initialState.images, action) {
 		case types.FLICKR_IMAGES_SUCCESS:
 			return [...state, action.images]
 		case types.SELECTED_IMAGE:
-			return { ...state, selectedImage: action.image }
+			return {...state, selectedImage: action.image }
+    case types.SEARCH_IMAGES_ERROR:
+      console.log('error from images reducer: ', action.error)
+      return {...state, error: action.error}
 		default:
 			return state
 	}

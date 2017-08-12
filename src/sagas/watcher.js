@@ -2,9 +2,14 @@
  * Created by Mihail on 1/7/2017.
  */
 import { takeLatest } from 'redux-saga/effects'
-import searchMediaSaga from './mediaSaga'
+import imagesSaga from './imagesSaga'
+import videosSaga from './videosSaga'
 import * as types from '../constants/actionTypes'
 
-export default function* watchSearchMedia() {
-	yield takeLatest(types.SEARCH_MEDIA_REQUEST, searchMediaSaga)
+export default function* watchImagesMedia() {
+  yield takeLatest(types.SEARCH_IMAGES_REQUEST, imagesSaga)
+}
+
+export function* watchVideosMedia() {
+  yield takeLatest(types.SEARCH_VIDEOS_REQUEST, videosSaga)
 }

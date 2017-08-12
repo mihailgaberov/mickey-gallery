@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { selectImageAction, searchMediaAction, selectVideoAction } from '../actions/mediaActions'
+import { selectImageAction, searchImagesAction, selectVideoAction, searchVideosAction } from '../actions/mediaActions'
 import PhotoPage from '../components/PhotosPage'
 import VideoPage from '../components/VideosPage'
 import '../styles/style.css'
@@ -18,7 +18,8 @@ export class MediaGalleryPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(searchMediaAction())
+    this.props.dispatch(searchImagesAction())
+    this.props.dispatch(searchVideosAction())
   }
 
   handleSelectImage(selectedImage) {

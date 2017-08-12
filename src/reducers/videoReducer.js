@@ -10,6 +10,8 @@ export default function (state = initialState.videos, action) {
       return [...state, action.videos]
     case types.SELECTED_VIDEO:
       return {...state, selectedVideo: action.video}
+    case types.SEARCH_VIDEOS_ERROR:
+      return {...state, error: action.error}
     default:
       return state
   }

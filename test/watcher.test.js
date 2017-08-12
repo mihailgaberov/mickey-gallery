@@ -3,15 +3,15 @@
  */
 import expect from 'expect'
 import { takeLatest } from 'redux-saga/effects'
-import searchMediaSaga from '../src/sagas/mediaSaga'
+import searchMediaSaga from '../src/sagas/imagesSaga'
 import watchSearchMedia from '../src/sagas/watcher'
 
 describe('watcher', () => {
 
   describe('watchSearchMedia', () => {
-    it('should call searchMediaSaga', () => {
+    it('should call imagesSaga', () => {
       const gen = watchSearchMedia()
-      expect(gen.next().value).toEqual(takeLatest('SEARCH_MEDIA_REQUEST', searchMediaSaga))
+      expect(gen.next().value).toEqual(takeLatest('SEARCH_IMAGES_REQUEST', searchMediaSaga))
     })
   })
 })
