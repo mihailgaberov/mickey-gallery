@@ -26,7 +26,7 @@ describe('Test for MediaGalleryPage', () => {
   it('should render self and subcomponents', () => {
     const { Wrapper } = setup()
 
-    expect(Wrapper.find('div').length).toEqual(3)
+    expect(Wrapper.find('div').length).toEqual(4)
     const PhotoPageWrapper = Wrapper.find('PhotosPage').props()
     const VideoPageWrapper = Wrapper.find('VideosPage').props()
     expect(PhotoPageWrapper.images).toEqual([{ id: 1, mediaUrl: 'test image url' }])
