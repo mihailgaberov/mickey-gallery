@@ -17,6 +17,9 @@ export default function* videosSaga() {
       ]
     )
   } catch (error) {
-    yield put({type: types.SEARCH_VIDEOS_ERROR, error})
+    yield put({
+      type: types.SEARCH_VIDEOS_ERROR,
+      error: 'An error occurred during fetching the videos. Please try again later or contact me at mihail.gaberov@gmail.com'
+    })
   }
 }

@@ -17,7 +17,9 @@ export default function* imagesSaga() {
       ]
     )
   } catch (error) {
-    console.log('erro from the saga: ', error)
-    yield put({type: types.SEARCH_IMAGES_ERROR, error})
+    yield put({
+      type: types.SEARCH_IMAGES_ERROR,
+      error: 'An error occurred during fetching the images. Please try again later or contact me at mihail.gaberov@gmail.com'
+    })
   }
 }

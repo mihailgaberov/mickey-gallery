@@ -9,6 +9,7 @@ import PhotoPage from '../components/PhotosPage'
 import VideoPage from '../components/VideosPage'
 import '../styles/style.css'
 import Spinner from '../components/Spinner'
+import ErrorMsg from '../components/ErrorMsg'
 
 export class MediaGalleryPage extends Component {
   constructor() {
@@ -31,26 +32,39 @@ export class MediaGalleryPage extends Component {
   }
 
   render() {
-    const {images, selectedImage, videos, selectedVideo} = this.props
+    const {
+      images,
+      selectedImage,
+      videos,
+      selectedVideo,
+      imagesError,
+      videosError
+    } = this.props
+
     return (
       <div className="container-fluid">
         <div className="row">
-          {images ?
-            <div>
-              <PhotoPage
-                images={images}
-                selectedImage={selectedImage}
-                onHandleSelectImage={this.handleSelectImage}
-              />
-            </div> : <Spinner/>}
-          {videos ?
-            <div>
-              <VideoPage
-                videos={videos}
-                selectedVideo={selectedVideo}
-                onHandleSelectVideo={this.handleSelectVideo}
-              />
-            </div> : <Spinner/>}
+          {!imagesError ?
+            images ?
+              <div>
+                <PhotoPage
+                  images={images}
+                  selectedImage={selectedImage}
+                  onHandleSelectImage={this.handleSelectImage}
+                />
+              </div> : <Spinner/>
+            : <ErrorMsg>{imagesError}</ErrorMsg>
+          }
+          {!videosError ?
+            videos ?
+              <div>
+                <VideoPage
+                  videos={videos}
+                  selectedVideo={selectedVideo}
+                  onHandleSelectVideo={this.handleSelectVideo}
+                />
+              </div> : <Spinner/>
+            : <ErrorMsg>{videosError}</ErrorMsg>}
         </div>
       </div>
     )
@@ -62,14 +76,18 @@ MediaGalleryPage.propTypes = {
   selectedImage: PropTypes.object,
   videos: PropTypes.array,
   selectedVideo: PropTypes.object,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  imagesError: PropTypes.string,
+  videosError: PropTypes.string
 }
 
-const mapStateToProps = ({images, videos}) => ({
+const mapStateToProps = ({images, videos, error}) => ({
   images: images[0],
   selectedImage: images.selectedImage,
   videos: videos[0],
-  selectedVideo: videos.selectedVideo
+  selectedVideo: videos.selectedVideo,
+  imagesError: images.error,
+  videosError: videos.error
 })
 
 export default connect(mapStateToProps)(MediaGalleryPage)

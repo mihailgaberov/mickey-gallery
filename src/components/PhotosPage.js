@@ -22,12 +22,12 @@ const PhotosPage = ({images, onHandleSelectImage, selectedImage}) => (
       ))}
     </div>
   </div>
-);
+)
 
 PhotosPage.propTypes = {
   images: PropTypes.array.isRequired,
   selectedImage: PropTypes.object,
   onHandleSelectImage: PropTypes.func.isRequired
-};
+}
 
-export default PhotosPage;
+export default PhotosPage
