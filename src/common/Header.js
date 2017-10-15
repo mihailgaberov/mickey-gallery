@@ -7,9 +7,9 @@ import { Link, IndexLink } from 'react-router'
 const Header = () => (
 	<div className="text-center">
 		<nav className="navbar navbar-default">
-			<IndexLink to="/" activeClassName="active">Home</IndexLink>
+			<IndexLink to="/" activeClassName="active">Photos</IndexLink>
 			{" | "}
-			<Link to="gallery" activeClassName="active">Gallery</Link>
+			<Link to="gallery" activeClassName="active">Videos</Link>
 		</nav>
 	</div>
 )
