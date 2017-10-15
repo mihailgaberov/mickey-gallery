@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const imgPath = require('../images/loader.gif')
+const imgPath = require('../../images/loader.gif')
 const Spinner = styled.div`
     width: 31px;
     height: 31px;

@@ -8,7 +8,7 @@ import { selectImageAction, searchImagesAction, selectVideoAction, searchVideosA
 import PhotoPage from '../components/PhotosPage'
 import VideoPage from '../components/VideosPage'
 import '../styles/style.css'
-import Spinner from '../components/Spinner'
+import Spinner from '../components/StyledComponents/Spinner'
 import ErrorMsg from '../components/ErrorMsg'
 
 export class MediaGalleryPage extends Component {
