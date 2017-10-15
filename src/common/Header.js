@@ -3,13 +3,13 @@
  */
 import React from 'react'
 import { Link, IndexLink } from 'react-router'
+import Navigation from '../components/StyledComponents/Navigation'
 
 const Header = () => (
-	<div>
-    <IndexLink to="/" activeClassName="active">Home</IndexLink>
-    {" | "}
-    <Link to="gallery" activeClassName="active">Gallery</Link>
-	</div>
+	<Navigation>
+    <li><IndexLink to="/" activeClassName="active">Photos</IndexLink></li>
+    <li><Link to="gallery" activeClassName="active">Videos</Link></li>
+	</Navigation>
 )
 
 export default Header
