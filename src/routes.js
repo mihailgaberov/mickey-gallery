@@ -3,13 +3,13 @@
  */
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import App from './containers/App'
-import HomePage from './components/HomePage'
-import MediaGalleryPage from './containers/MediaGalleryPage'
+import App from './components/App'
+import PhotosPage from './components/PhotosPage'
+import VideosPage from './components/VideosPage'
 
 export default (
 	<Route path="/" component={App}>
-		<IndexRoute component={HomePage} />
-		<Route path="gallery" component={MediaGalleryPage} />
+		<IndexRoute component={PhotosPage} />
+		<Route path="videos" component={VideosPage} />
 	</Route>
 )

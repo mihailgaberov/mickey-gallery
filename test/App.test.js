@@ -4,7 +4,7 @@
 import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
-import App from '../src/containers/App';
+import App from '../src/components/App';
 
 
 describe('Test App', () => {

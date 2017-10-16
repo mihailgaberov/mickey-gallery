@@ -1,7 +1,7 @@
 import React from 'react'
 import expect from 'expect'
 import { shallow } from 'enzyme'
-import { MediaGalleryPage } from '../src/containers/MediaGalleryPage'
+import { MediaGalleryPage } from '../src/components/MediaGalleryPage'
 
 
 const setup = () => {
