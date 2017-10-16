@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { Link, IndexLink } from 'react-router'
-import Navigation from '../components/StyledComponents/Navigation'
+import Navigation from '../StyledComponents/Navigation'
 
 const Header = () => (
 	<Navigation>

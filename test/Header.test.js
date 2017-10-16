@@ -5,7 +5,7 @@ import React from 'react'
 import expect from 'expect'
 import { Link, IndexLink } from 'react-router'
 import { shallow } from 'enzyme'
-import Header from '../src/common/Header'
+import Header from '../src/components/common/Header'
 
 describe('Test for Header component', () => {
   it('should render header component', () => {
