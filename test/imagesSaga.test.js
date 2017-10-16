@@ -7,7 +7,7 @@ import imagesSaga from '../src/sagas/imagesSaga'
 import { flickrImages } from '../src/Api/api'
 
 
-describe('imagesSaga', () => {
+describe('Test for Images Saga', () => {
   const gen = imagesSaga()
 
   it('should call Flickr API', () => {

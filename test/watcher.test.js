@@ -6,7 +6,7 @@ import { takeLatest } from 'redux-saga/effects'
 import searchMediaSaga from '../src/sagas/imagesSaga'
 import watchSearchMedia from '../src/sagas/watcher'
 
-describe('watcher', () => {
+describe('Test for Watcher', () => {
 
   describe('watchSearchMedia', () => {
     it('should call imagesSaga', () => {

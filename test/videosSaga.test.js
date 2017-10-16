@@ -4,7 +4,7 @@ import videoSaga from '../src/sagas/videosSaga'
 import { flickrVideos } from '../src/Api/api'
 
 
-describe('videoSaga', () => {
+describe('Test for Video Saga', () => {
   const gen = videoSaga()
 
   it('should call Flickr API', () => {

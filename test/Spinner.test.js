@@ -6,7 +6,7 @@ const setup = () => {
   return shallow(<Spinner />)
 }
 
-describe('Spinner tests', () => {
+describe('Test for Spinner component', () => {
 
   it('should render itself', () => {
     const wrapper = setup()
