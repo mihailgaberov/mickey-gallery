@@ -1,37 +1,38 @@
-/**
- * Created by mgab on 29/03/2017.
- */
-import expect from 'expect';
-import React from 'react';
-import { mount } from 'enzyme';
-import VideosPage from '../src/components/VideosPage';
+import React from 'react'
+import expect from 'expect'
+import { shallow } from 'enzyme'
+import { VideosPage } from '../src/components/VideosPage'
 
-const setUp = () => {
+
+const setup = () => {
   const props = {
-    videos: [{ id: 1, test: 'test video' }],
-    onHandleSelectVideo: expect.createSpy(),
-    selectedVideo: { id: 1, test: 'test video' }
-  };
-  const Wrapper = mount(<VideosPage {...props} />);
-  return { Wrapper };
-};
-const { Wrapper } = setUp();
+    handleSearch: expect.createSpy(),
+    handleSelectVideo: expect.createSpy(),
+    dispatch: expect.createSpy(),
+    ref: expect.createSpy(),
+    value: 'ref',
+    videos: [{ id: 1, mediaUrl: 'test video url' }],
+    selectedVideo: { id: 1, mediaUrl: 'test video url' },
+  }
 
-describe('Test for Videos Page component', () => {
-  it('should assert that the component exist', () => {
-    expect(Wrapper).toExist();
-  });
+  const Wrapper = shallow(<VideosPage {...props} />)
+  return { Wrapper, props }
+}
 
-  it('should have render  props', () => {
-    expect(Wrapper.props().videos).toEqual([{ id: 1, test: 'test video' }]);
-    expect(typeof Wrapper.props().onHandleSelectVideo).toEqual('function');
-    expect(Wrapper.props().selectedVideo).toEqual({ id: 1, test: 'test video' });
-  });
+describe('Test for VideosPage', () => {
+  it('should render self and sub components', () => {
+    const { Wrapper } = setup()
 
-  it('should render self', () => {
-    expect(Wrapper.find('h2').text()).toEqual('Videos');
-    expect(Wrapper.find('h6').hasClass('title')).toBe(true);
-    expect(Wrapper.find('video').length).toEqual(2);
-    expect(Wrapper.find('div').length).toEqual(5);
-  });
-});
+    expect(Wrapper.find('div').length).toEqual(6)
+    expect(Wrapper.videos).toEqual([{ id: 1, mediaUrl: 'test video url' }])
+    expect(Wrapper.selectedVideo).toEqual({ id: 1, mediaUrl: 'test video url' })
+    expect(typeof Wrapper.handleSelectVideo).toBe('function')
+  })
+
+  it('should call dispatch handleSelectVideo', () => {
+    const { Wrapper, props } = setup()
+
+    Wrapper.props().handleSelectVideo({ id: 1, mediaUrl: 'test video url' })
+    expect(props.dispatch.calls.length).toBe(1)
+  })
+})

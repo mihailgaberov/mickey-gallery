@@ -1,38 +1,38 @@
-/**
- * Created by mgab on 29/03/2017.
- */
-import expect from 'expect';
-import React from 'react';
-import { mount } from 'enzyme';
-import PhotoPage from '../src/components/PhotosPage';
+import React from 'react'
+import expect from 'expect'
+import { shallow } from 'enzyme'
+import { PhotosPage } from '../src/components/PhotosPage'
 
 
-describe('Test for Image Page component', () => {
-  const setUp = () => {
-    const props = {
-      images: [{ id: 1, test: 'test image' }],
-      onHandleSelectImage: expect.createSpy(),
-      selectedImage: { id: 1, test: 'test image' }
-    };
-    const Wrapper = mount(<PhotoPage {...props} />);
-    return { Wrapper };
-  };
-  const { Wrapper } = setUp();
+const setup = () => {
+  const props = {
+    handleSearch: expect.createSpy(),
+    handleSelectImage: expect.createSpy(),
+    dispatch: expect.createSpy(),
+    ref: expect.createSpy(),
+    value: 'ref',
+    images: [{ id: 1, mediaUrl: 'test image url' }],
+    selectedImage: { id: 1, mediaUrl: 'test image url' }
+  }
 
-  it('should assert that Component exist', () => {
-    expect(Wrapper).toExist();
-  });
+  const Wrapper = shallow(<PhotosPage {...props} />)
+  return { Wrapper, props }
+}
 
-  it('should have render props', () => {
-    expect(Wrapper.props().images).toEqual([{ id: 1, test: 'test image' }]);
-    expect(typeof Wrapper.props().onHandleSelectImage).toEqual('function');
-    expect(Wrapper.props().selectedImage).toEqual({ id: 1, test: 'test image' });
-  });
+describe('Test for PhotosPage', () => {
+  it('should render self and sub components', () => {
+    const { Wrapper } = setup()
 
-  it('should render self', () => {
-    expect(Wrapper.find('h2').text()).toEqual('Images');
-    expect(Wrapper.find('h6').hasClass('title')).toBe(true);
-    expect(Wrapper.find('img').length).toEqual(2);
-    expect(Wrapper.find('div').length).toEqual(5);
-  });
-});
+    expect(Wrapper.find('div').length).toEqual(6)
+    expect(Wrapper.images).toEqual([{ id: 1, mediaUrl: 'test image url' }])
+    expect(Wrapper.selectedImage).toEqual({ id: 1, mediaUrl: 'test image url' })
+    expect(typeof Wrapper.handleSelectImage).toBe('function')
+  })
+
+  it('should call dispatch on handleSelectImage', () => {
+    const { Wrapper, props } = setup()
+
+    Wrapper.props().handleSelectImage({ id: 1, mediaUrl: 'test image url' })
+    expect(props.dispatch.calls.length).toBe(1)
+  })
+})
