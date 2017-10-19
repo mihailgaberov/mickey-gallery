@@ -14,6 +14,8 @@ export class PhotosPageNew extends Component {
   }
 
   render() {
+    const { images, imagesError } = this.props
+
     const config = {
       "containerWidth": window.innerWidth,
       containerPadding: {
@@ -24,23 +26,29 @@ export class PhotosPageNew extends Component {
       }
     }
 
-    const sizes = [0.5, 1.5, 1, 1.8, 0.4, 0.7, 0.9, 1.1, 1.7, 2, 2.1]
+    const sizes = images ? images.map((image) => {
+      return {
+        width: image.width,
+        height: image.height
+      }
+    }) : []
 
     const geometry = justifiedLayout(sizes, config)
-    const { images, imagesError } = this.props
 
-    console.log('images: ', images)
-
+    console.log('geometry: ', geometry)
     return (
       <div>
         {!imagesError ?
-          images ?
+          images && geometry.boxes.length > 0 ?
             <div>
               {images.map((image, i) => (
-                <img src={image.mediaUrl}
-                     alt={image.title}
-                     width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
-                     height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
+                <div>
+                  <img src={image.mediaUrl}
+                       alt={image.title}
+                       width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
+                       height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
+                  <span>{image.datetaken}</span>
+                </div>
               ))}
             </div> : <Spinner/>
           : <ErrorMsg>{imagesError}</ErrorMsg>

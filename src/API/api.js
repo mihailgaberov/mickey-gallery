@@ -16,24 +16,28 @@ export async function flickrImages() {
 	&page=5
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}
-	&extras=date_upload,o_dims,url_o`
+	&extras=date_taken,o_dims,url_o`
 
   let fetchedData = await fetch(FLICKR_API_ENDPOINT)
   fetchedData = await fetchedData.json()
-  return fetchedData.photoset.photo.reverse().map(({farm,
+  return fetchedData.photoset.photo.reverse().map(({
+                                                     farm,
                                                      server,
                                                      id,
                                                      secret,
                                                      title,
                                                      url_o,
                                                      height_o,
-                                                     width_o }) => ({
+                                                     width_o,
+                                                     datetaken
+                                                   }) => ({
     id,
     title,
     mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
     width: width_o,
     height: height_o,
-    oUrl: url_o
+    oUrl: url_o,
+    datetaken
   }))
 }
 
@@ -49,7 +53,7 @@ export async function flickrVideos() {
 
   let fetchedData = await fetch(FLICKR_API_ENDPOINT)
   fetchedData = await fetchedData.json()
-  return fetchedData.photoset.photo.reverse().map(({id, secret, title}) => ({
+  return fetchedData.photoset.photo.reverse().map(({ id, secret, title }) => ({
     id,
     title,
     mediaUrl: `https://www.flickr.com/photos/${REACT_APP_FLICKR_USER_ID}/${id}/play/site/${secret}`
