@@ -24,23 +24,26 @@ export class PhotosPageNew extends Component {
       }
     }
 
-    const sizes = []
-
+    // TODO: Get the sizes of the real images.
+    const sizes = [
+      {
+        width: 400,
+        height: 300
+      },
+      {
+        width: 300,
+        height: 300
+      },
+      {
+        width: 250,
+        height: 400
+      }
+    ]
     const geometry = justifiedLayout(sizes, config)
-    /*var boxes = geometry.boxes.map(function (box) {
-      return  `<div class="box"
-                style="width: ${box.width}px;
-                      height: ${box.height}px;
-                      top: ${box.top}px;
-                      left: ${box.left}px"></div>`;
-    }).join('\n')*/
     const {
       images,
       imagesError
     } = this.props
-
-
-    console.log(images)
 
     return (
       <div>
@@ -50,7 +53,10 @@ export class PhotosPageNew extends Component {
               <div>
                 {images.map((image, i) => (
                   <div key={i}>
-                    <img src={image.mediaUrl} alt={image.title}/>
+                    <img src={image.mediaUrl}
+                         alt={image.title}
+                         width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
+                         height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
                   </div>
                 ))}
               </div>
