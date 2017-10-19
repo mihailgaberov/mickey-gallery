@@ -24,42 +24,24 @@ export class PhotosPageNew extends Component {
       }
     }
 
-    // TODO: Get the sizes of the real images.
-    const sizes = [
-      {
-        width: 400,
-        height: 300
-      },
-      {
-        width: 300,
-        height: 300
-      },
-      {
-        width: 250,
-        height: 400
-      }
-    ]
+    const sizes = [0.5, 1.5, 1, 1.8, 0.4, 0.7, 0.9, 1.1, 1.7, 2, 2.1]
+
     const geometry = justifiedLayout(sizes, config)
-    const {
-      images,
-      imagesError
-    } = this.props
+    const { images, imagesError } = this.props
+
+    console.log('images: ', images)
 
     return (
       <div>
         {!imagesError ?
           images ?
             <div>
-              <div>
-                {images.map((image, i) => (
-                  <div key={i}>
-                    <img src={image.mediaUrl}
-                         alt={image.title}
-                         width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
-                         height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
-                  </div>
-                ))}
-              </div>
+              {images.map((image, i) => (
+                <img src={image.mediaUrl}
+                     alt={image.title}
+                     width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
+                     height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
+              ))}
             </div> : <Spinner/>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }

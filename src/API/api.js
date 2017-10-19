@@ -12,17 +12,28 @@ export async function flickrImages() {
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
-	&per_page=1000
+	&per_page=100
+	&page=5
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}
-	&extras=date_upload`
+	&extras=date_upload,o_dims,url_o`
 
   let fetchedData = await fetch(FLICKR_API_ENDPOINT)
   fetchedData = await fetchedData.json()
-  return fetchedData.photoset.photo.reverse().map(({farm, server, id, secret, title}) => ({
+  return fetchedData.photoset.photo.reverse().map(({farm,
+                                                     server,
+                                                     id,
+                                                     secret,
+                                                     title,
+                                                     url_o,
+                                                     height_o,
+                                                     width_o }) => ({
     id,
     title,
-    mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`
+    mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
+    width: width_o,
+    height: height_o,
+    oUrl: url_o
   }))
 }
 
