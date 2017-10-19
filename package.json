@@ -21,6 +21,7 @@
     "enzyme": "^2.9.1",
     "expect": "latest",
     "isomorphic-fetch": "^2.2.1",
+    "justified-layout": "^2.1.0",
     "prop-types": "^15.5.10",
     "pushstate-server": "^3.0.0",
     "react": "^15.4.1",
