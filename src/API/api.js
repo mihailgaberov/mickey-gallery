@@ -26,7 +26,7 @@ export async function flickrImages() {
   }))
 }
 
-export const flickrVideos = () => {
+export async function flickrVideos() {
   const FLICKR_API_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
@@ -36,15 +36,11 @@ export const flickrVideos = () => {
 	&photoset_id=${REACT_APP_FLICKR_VIDEOSET_ID}
 	&extras=date_upload`
 
-  return fetch(FLICKR_API_ENDPOINT)
-    .then(response => {
-      return response.json()
-    })
-    .then(json => {
-      return json.photoset.photo.reverse().map(({id, secret, title}) => ({
-        id,
-        title,
-        mediaUrl: `https://www.flickr.com/photos/${REACT_APP_FLICKR_USER_ID}/${id}/play/site/${secret}`
-      }))
-    })
+  let fetchedData = await fetch(FLICKR_API_ENDPOINT)
+  fetchedData = await fetchedData.json()
+  return fetchedData.photoset.photo.reverse().map(({id, secret, title}) => ({
+    id,
+    title,
+    mediaUrl: `https://www.flickr.com/photos/${REACT_APP_FLICKR_USER_ID}/${id}/play/site/${secret}`
+  }))
 }
