@@ -6,6 +6,7 @@ import ErrorMsg from '../components/ErrorMsg'
 import Spinner from '../components/StyledComponents/Spinner'
 import '../styles/style.css'
 import justifiedLayout from 'justified-layout'
+import MainContainer from './StyledComponents/MainContainer'
 
 export class PhotosPageNew extends Component {
 
@@ -14,10 +15,10 @@ export class PhotosPageNew extends Component {
   }
 
   render() {
-    const { images, imagesError } = this.props
+    const {images, imagesError} = this.props
 
     const config = {
-      "containerWidth": window.innerWidth,
+      containerWidth: window.innerWidth,
       containerPadding: {
         top: 0,
         right: 14,
@@ -34,23 +35,24 @@ export class PhotosPageNew extends Component {
     }) : []
 
     const geometry = justifiedLayout(sizes, config)
-
-    console.log('geometry: ', geometry)
     return (
       <div>
         {!imagesError ?
           images && geometry.boxes.length > 0 ?
-            <div>
+            <MainContainer style={{height: geometry.containerHeight + 'px'}}>
               {images.map((image, i) => (
-                <div>
-                  <img src={image.mediaUrl}
-                       alt={image.title}
-                       width={geometry.boxes[i] ? geometry.boxes[i].width : 320}
-                       height={geometry.boxes[i] ? geometry.boxes[i].height : 400}/>
-                  <span>{image.datetaken}</span>
-                </div>
+                <img src={image.mediaUrl}
+                     alt={image.datetaken}
+                     style={
+                       {
+                         width: `${geometry.boxes[i].width}px`,
+                         top: `${geometry.boxes[i].top}px`,
+                         left: `${geometry.boxes[i].left}px`
+                       }
+                     }
+                />
               ))}
-            </div> : <Spinner/>
+            </MainContainer> : <Spinner/>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }
       </div>
