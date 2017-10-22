@@ -5,11 +5,11 @@ import React from 'react'
 import { IndexRoute, Route } from 'react-router'
 import App from './components/App'
 import PhotosPageNew from './components/PhotosPageNew'
-import VideosPage from './components/VideosPage'
+import VideosPageNew from './components/VideosPageNew'
 
 export default (
-	<Route path="/" component={App}>
-		<IndexRoute component={PhotosPageNew} />
-		<Route path="videos" component={VideosPage} />
-	</Route>
+  <Route path="/" component={App}>
+    <IndexRoute component={PhotosPageNew}/>
+    <Route path="videos" component={VideosPageNew}/>
+  </Route>
 )

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 const Navigation = styled.ul`
   width: 100%;
   position: fixed;
+  top: 0;
+  overflow: hidden;
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
