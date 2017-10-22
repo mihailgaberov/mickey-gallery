@@ -1,56 +1,55 @@
-/**
- * Created by Mihail on 1/7/2017.
- */
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { searchVideosAction, selectVideoAction } from '../actions/mediaActions'
-import '../styles/style.css'
-import Spinner from '../components/StyledComponents/Spinner'
+import { searchVideosAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
+import Spinner from '../components/StyledComponents/Spinner'
+import '../styles/style.css'
+import justifiedLayout from 'justified-layout'
+import MainContainer from './StyledComponents/MainContainer'
 
 export class VideosPage extends Component {
-  constructor() {
-    super()
-    this.handleSelectVideo = this.handleSelectVideo.bind(this)
-  }
 
   componentDidMount() {
     this.props.dispatch(searchVideosAction())
   }
 
-  handleSelectVideo(selectedVideo) {
-    this.props.dispatch(selectVideoAction(selectedVideo))
-  }
-
   render() {
-    const {
-      videos,
-      selectedVideo,
-      videosError
-    } = this.props
+    const {videos, videosError} = this.props
+    const config = {
+      containerWidth: window.innerWidth,
+      forceAspectRatio: 1,
+      containerPadding: {
+        top: 0,
+        right: 14,
+        bottom: 0,
+        left: 14
+      }
+    }
+    const sizes = videos ? Array.from(new Array(videos.length), () => 1) : []
+    const geometry = justifiedLayout(sizes, config)
 
     return (
       <div>
         {!videosError ?
-          videos ?
-            <div>
-              {selectedVideo ? <div className="select-video">
-                <div id={selectedVideo.id}>
-                  <h6 className="title">{selectedVideo.title}</h6>
-                  <video controls src={selectedVideo.mediaUrl} alt={selectedVideo.title}/>
-                </div>
-              </div> : ''
-              }
-              <div className="video-thumbnail">
-                {videos.map((video, i) => (
-                  <div key={i} onClick={this.handleSelectVideo.bind(this, video)}>
-                    <video controls src={video.mediaUrl} alt={video.title}/>
-                  </div>
-                ))}
-              </div>
-            </div> : <Spinner/>
-          : <ErrorMsg>{videosError}</ErrorMsg>}
+          videos && geometry.boxes.length > 0 ?
+            <MainContainer style={{height: geometry.containerHeight + 'px'}}>
+              {videos.map((video, i) => (
+                <video key={i}
+                       controls
+                       src={video.mediaUrl}
+                       alt={video.title}
+                       style={
+                         {
+                           width: `${geometry.boxes[i].width}px`,
+                           top: `${geometry.boxes[i].top}px`,
+                           left: `${geometry.boxes[i].left}px`
+                         }}
+                />
+              ))}
+            </MainContainer> : <Spinner/>
+          : <ErrorMsg>{videosError}</ErrorMsg>
+        }
       </div>
     )
   }
@@ -58,14 +57,12 @@ export class VideosPage extends Component {
 
 VideosPage.propTypes = {
   videos: PropTypes.array,
-  selectedVideo: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   videosError: PropTypes.string
 }
 
 const mapStateToProps = ({videos, error}) => ({
   videos: videos[0],
-  selectedVideo: videos.selectedVideo,
   videosError: videos.error
 })
 

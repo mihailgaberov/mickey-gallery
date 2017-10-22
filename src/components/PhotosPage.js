@@ -1,55 +1,59 @@
-/**
- * Created by Mihail on 1/8/2017.
- */
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchImagesAction, selectImageAction } from '../actions/mediaActions'
-import '../styles/style.css'
-import Spinner from '../components/StyledComponents/Spinner'
+import { searchImagesAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
+import Spinner from '../components/StyledComponents/Spinner'
+import '../styles/style.css'
+import justifiedLayout from 'justified-layout'
+import MainContainer from './StyledComponents/MainContainer'
 
 export class PhotosPage extends Component {
-  constructor() {
-    super()
-    this.handleSelectImage = this.handleSelectImage.bind(this)
-  }
 
   componentDidMount() {
     this.props.dispatch(searchImagesAction())
   }
 
-  handleSelectImage(selectedImage) {
-    this.props.dispatch(selectImageAction(selectedImage))
-  }
-
   render() {
-    const {
-      images,
-      selectedImage,
-      imagesError,
-    } = this.props
+    const {images, imagesError} = this.props
 
+    const config = {
+      containerWidth: window.innerWidth,
+      containerPadding: {
+        top: 0,
+        right: 14,
+        bottom: 0,
+        left: 14
+      }
+    }
+
+    const sizes = images ? images.map((image) => {
+      return {
+        width: image.width,
+        height: image.height
+      }
+    }) : []
+
+    const geometry = justifiedLayout(sizes, config)
     return (
       <div>
         {!imagesError ?
-          images ?
-            <div>
-              {selectedImage ?
-                <div className="selected-image">
-                  <div id={selectedImage.id}>
-                    <h6 className="title">{selectedImage.title}</h6>
-                    <img src={selectedImage.mediaUrl} alt={selectedImage.title}/>
-                  </div>
-                </div> : ''}
-              <div className="image-thumbnail">
-                {images.map((image, i) => (
-                  <div key={i} onClick={this.handleSelectImage.bind(this, image)}>
-                    <img src={image.mediaUrl} alt={image.title}/>
-                  </div>
-                ))}
-              </div>
-            </div> : <Spinner/>
+          images && geometry.boxes.length > 0 ?
+            <MainContainer style={{height: geometry.containerHeight + 'px'}}>
+              {images.map((image, i) => (
+                <img key={i}
+                     src={image.mediaUrl}
+                     alt={image.datetaken}
+                     style={
+                       {
+                         width: `${geometry.boxes[i].width}px`,
+                         top: `${geometry.boxes[i].top}px`,
+                         left: `${geometry.boxes[i].left}px`
+                       }
+                     }
+                />
+              ))}
+            </MainContainer> : <Spinner/>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }
       </div>
@@ -59,14 +63,12 @@ export class PhotosPage extends Component {
 
 PhotosPage.propTypes = {
   images: PropTypes.array,
-  selectedImage: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
-  imagesError: PropTypes.string,
+  imagesError: PropTypes.string
 }
 
-const mapStateToProps = ({ images, error }) => ({
+const mapStateToProps = ({images, error}) => ({
   images: images[0],
-  selectedImage: images.selectedImage,
   imagesError: images.error
 })
 

@@ -4,8 +4,8 @@
 import React from 'react'
 import { IndexRoute, Route } from 'react-router'
 import App from './components/App'
-import PhotosPageNew from './components/PhotosPageNew'
-import VideosPageNew from './components/VideosPageNew'
+import PhotosPageNew from './components/PhotosPage'
+import VideosPageNew from './components/VideosPage'
 
 export default (
   <Route path="/" component={App}>
