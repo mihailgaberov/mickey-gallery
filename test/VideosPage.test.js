@@ -2,15 +2,14 @@ import React from 'react'
 import expect from 'expect'
 import { shallow } from 'enzyme'
 import { VideosPage } from '../src/components/VideosPage'
+import LazyLoad from 'react-lazyload'
 
 
 const setup = () => {
   const props = {
     handleSearch: expect.createSpy(),
-    // handleSelectVideo: expect.createSpy(),
     dispatch: expect.createSpy(),
     ref: expect.createSpy(),
-    // value: 'ref',
     videos: [{ id: 1, mediaUrl: 'test video url', width: 230 }]
   }
 
@@ -24,13 +23,6 @@ describe('Test for VideosPage', () => {
 
     expect(Wrapper.find('div').length).toEqual(1)
     expect(Wrapper.find('video').length).toEqual(1)
-    // expect(typeof Wrapper.handleSelectVideo).toBe('function')
+    expect(Wrapper.find(LazyLoad).length).toEqual(1)
   })
-
-  /*it('should call dispatch handleSelectVideo', () => {
-    const { Wrapper, props } = setup()
-
-    Wrapper.props().handleSelectVideo({ id: 1, mediaUrl: 'test video url' })
-    expect(props.dispatch.calls.length).toBe(1)
-  })*/
 })
