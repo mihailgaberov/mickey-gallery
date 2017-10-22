@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Navigation = styled.ul`
   width: 100%;
+  position: fixed;
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;

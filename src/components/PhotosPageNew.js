@@ -41,7 +41,8 @@ export class PhotosPageNew extends Component {
           images && geometry.boxes.length > 0 ?
             <MainContainer style={{height: geometry.containerHeight + 'px'}}>
               {images.map((image, i) => (
-                <img src={image.mediaUrl}
+                <img key={i}
+                     src={image.mediaUrl}
                      alt={image.datetaken}
                      style={
                        {
