@@ -1,21 +1,17 @@
-/**
- * Created by mgab on 28/03/2017.
- */
-import React from 'react';
-import expect from 'expect';
-import { shallow } from 'enzyme';
-import App from '../src/components/App';
+import { shallow } from 'enzyme'
+import expect from 'expect'
+import React from 'react'
+import App from '../src/components/App'
 
 
 describe('Test App', () => {
-  const props = ['test1', 'test2'];
-  const wrapper = shallow(<App children={props} />);
+  const props = ['test1', 'test2']
+  const wrapper = shallow(<App children={props} />)
   it('should render itself', () => {
-    expect(wrapper.find('Header').length).toEqual(1);
-    expect(wrapper.find('div').hasClass('container-fluid')).toBe(true);
-  });
+    expect(wrapper.find('Header').length).toEqual(1)
+  })
 
   it('should render children', () => {
-    expect(typeof wrapper.props().children).toBe('object');
-  });
-});
+    expect(typeof wrapper.props().children).toBe('object')
+  })
+})
