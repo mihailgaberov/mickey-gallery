@@ -77,7 +77,7 @@ PhotosPage.propTypes = {
 
 const mapStateToProps = ({images, error}) => ({
   images: images[0],
-  imagesError: images.error
+  imagesError: error
 })
 
 export default connect(mapStateToProps)(PhotosPage)

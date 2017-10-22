@@ -71,7 +71,7 @@ VideosPage.propTypes = {
 
 const mapStateToProps = ({videos, error}) => ({
   videos: videos[0],
-  videosError: videos.error
+  videosError: error
 })
 
 export default connect(mapStateToProps)(VideosPage)

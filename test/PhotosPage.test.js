@@ -5,12 +5,14 @@ import { PhotosPage } from '../src/components/PhotosPage'
 import LazyLoad from 'react-lazyload'
 import SpinnerContainer from '../src/components/StyledComponents/SpinnerContainer'
 import Spinner from '../src/components/StyledComponents/Spinner'
+import ErrorMsg from '../src/components/ErrorMsg'
 
-const setup = (images) => {
+const setup = (images, error) => {
   const props = {
     handleSearch: expect.createSpy(),
     dispatch: expect.createSpy(),
-    images: images
+    images: images,
+    imagesError: error
   }
 
   const Wrapper = shallow(<PhotosPage {...props} />)
@@ -31,5 +33,10 @@ describe('Test for PhotosPage', () => {
 
     expect(Wrapper.find(SpinnerContainer).length).toEqual(1)
     expect(Wrapper.find(Spinner).length).toEqual(1)
+  })
+
+  it('should show error message if any errors occurred', () => {
+    const { Wrapper } = setup([], 'error')
+    expect(Wrapper.find(ErrorMsg).length).toEqual(1)
   })
 })
