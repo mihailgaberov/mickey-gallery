@@ -7,6 +7,8 @@ import Spinner from '../components/StyledComponents/Spinner'
 import '../styles/style.css'
 import justifiedLayout from 'justified-layout'
 import MainContainer from './StyledComponents/MainContainer'
+import LazyLoad from 'react-lazyload'
+import SpinnerContainer from './StyledComponents/SpinnerContainer'
 
 export class PhotosPage extends Component {
 
@@ -41,19 +43,25 @@ export class PhotosPage extends Component {
           images && geometry.boxes.length > 0 ?
             <MainContainer style={{height: geometry.containerHeight + 'px'}}>
               {images.map((image, i) => (
-                <img key={i}
-                     src={image.mediaUrl}
-                     alt={image.datetaken}
-                     style={
-                       {
-                         width: `${geometry.boxes[i].width}px`,
-                         top: `${geometry.boxes[i].top}px`,
-                         left: `${geometry.boxes[i].left}px`
+                <LazyLoad key={i}
+                          height={geometry.boxes[i].height}>
+                  <img src={image.mediaUrl}
+                       alt={image.datetaken}
+                       style={
+                         {
+                           width: `${geometry.boxes[i].width}px`,
+                           top: `${geometry.boxes[i].top}px`,
+                           left: `${geometry.boxes[i].left}px`
+                         }
                        }
-                     }
-                />
+                  />
+                </LazyLoad>
               ))}
-            </MainContainer> : <Spinner/>
+            </MainContainer>
+            :
+            <SpinnerContainer>
+              <Spinner/>
+            </SpinnerContainer>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }
       </div>

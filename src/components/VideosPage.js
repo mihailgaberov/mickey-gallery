@@ -7,6 +7,8 @@ import Spinner from '../components/StyledComponents/Spinner'
 import '../styles/style.css'
 import justifiedLayout from 'justified-layout'
 import MainContainer from './StyledComponents/MainContainer'
+import LazyLoad from 'react-lazyload'
+import SpinnerContainer from './StyledComponents/SpinnerContainer'
 
 export class VideosPage extends Component {
 
@@ -35,19 +37,25 @@ export class VideosPage extends Component {
           videos && geometry.boxes.length > 0 ?
             <MainContainer style={{height: geometry.containerHeight + 'px'}}>
               {videos.map((video, i) => (
-                <video key={i}
-                       controls
-                       src={video.mediaUrl}
-                       alt={video.title}
-                       style={
-                         {
-                           width: `${geometry.boxes[i].width}px`,
-                           top: `${geometry.boxes[i].top}px`,
-                           left: `${geometry.boxes[i].left}px`
-                         }}
-                />
+                <LazyLoad key={i}
+                          height={geometry.boxes[i].height}>
+                  <video controls
+                         src={video.mediaUrl}
+                         alt={video.title}
+                         style={
+                           {
+                             width: `${geometry.boxes[i].width}px`,
+                             top: `${geometry.boxes[i].top}px`,
+                             left: `${geometry.boxes[i].left}px`
+                           }}
+                  />
+                </LazyLoad>
               ))}
-            </MainContainer> : <Spinner/>
+            </MainContainer>
+            :
+            <SpinnerContainer>
+              <Spinner/>
+            </SpinnerContainer>
           : <ErrorMsg>{videosError}</ErrorMsg>
         }
       </div>
