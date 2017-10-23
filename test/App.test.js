@@ -5,8 +5,9 @@ import App from '../src/components/App'
 
 
 describe('Test App', () => {
-  const props = ['test1', 'test2']
-  const wrapper = shallow(<App children={props} />)
+  const props = ['']
+  const wrapper = shallow(<App children={props}/>)
+
   it('should render itself', () => {
     expect(wrapper.find('Header').length).toEqual(1)
   })
