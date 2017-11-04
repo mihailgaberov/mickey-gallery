@@ -14,10 +14,11 @@ describe('Test Store', () => {
   it('should return dispatch action to the api', () => {
     const store = mockStore({})
     const expectedValue = {
-      type: 'SEARCH_IMAGES_REQUEST'
+      type: 'SEARCH_IMAGES_REQUEST',
+      pageNum: 1
     }
 
-    store.dispatch(searchImagesAction())
+    store.dispatch(searchImagesAction(1))
     expect(store.getActions()).toEqual([expectedValue])
   })
 })

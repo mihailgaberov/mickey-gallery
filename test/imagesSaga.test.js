@@ -2,17 +2,15 @@
  * Created by mgab on 29/03/2017.
  */
 import expect from 'expect'
-import { put, call, all } from 'redux-saga/effects'
-import imagesSaga from '../src/sagas/imagesSaga'
+import { all, call, put } from 'redux-saga/effects'
 import { flickrImages } from '../src/Api/api'
-
+import imagesSaga from '../src/sagas/imagesSaga'
 
 describe('Test for Images Saga', () => {
-  const gen = imagesSaga()
-
+  const gen = imagesSaga(1)
   it('should call Flickr API', () => {
     expect(gen.next().value).toEqual(all({
-        images: call(flickrImages)
+        images: {photos: call(flickrImages), pageNum: 1}
       }
     ))
   })
