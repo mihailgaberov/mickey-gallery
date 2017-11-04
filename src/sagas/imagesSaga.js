@@ -6,7 +6,7 @@ import { flickrImages } from '../API/api'
 import * as types from '../constants/actionTypes'
 
 export default function* imagesSaga(arg) {
-  const reducedByScrollPageNum = arg.pageNum
+  const reducedByScrollPageNum = arg ? arg.pageNum : undefined
   try {
     const {photos, pageNum} = yield call(flickrImages, reducedByScrollPageNum)
 
