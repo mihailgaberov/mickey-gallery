@@ -13,8 +13,9 @@ export const selectVideoAction = (video) => ({
   video
 })
 
-export const searchImagesAction = () => ({
-  type: types.SEARCH_IMAGES_REQUEST
+export const searchImagesAction = (pageNum) => ({
+  type: types.SEARCH_IMAGES_REQUEST,
+  pageNum
 })
 
 export const searchVideosAction = () => ({

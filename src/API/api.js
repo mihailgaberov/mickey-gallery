@@ -7,34 +7,39 @@ const REACT_APP_FLICKR_USER_ID = process.env.REACT_APP_FLICKR_USER_ID
 const REACT_APP_FLICKR_PHOTOSET_ID = process.env.REACT_APP_FLICKR_PHOTOSET_ID
 const REACT_APP_FLICKR_VIDEOSET_ID = process.env.REACT_APP_FLICKR_VIDEOSET_ID
 
-export async function flickrImages() {
+export async function flickrImages(pageNum) {
   const PHOTOSET_INFO_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photosets.getInfo&api_key=${REACT_APP_FLICKR_API_KEY}&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}&user_id=${REACT_APP_FLICKR_USER_ID}&format=json&nojsoncallback=1`
 
   let fetchedInfo = await fetch(PHOTOSET_INFO_ENDPOINT)
   fetchedInfo = await fetchedInfo.json()
   const lastPageNum = Math.ceil(fetchedInfo.photoset.count_photos / 100) || 1
 
-  const GET_PHOTOS_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos
+  const page = pageNum !== undefined ? pageNum : lastPageNum
+
+  let GET_PHOTOS_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
 	&per_page=100
-	&page=${lastPageNum}
+	&page=${page}
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}
 	&extras=date_taken,o_dims,url_o`
 
   let fetchedData = await fetch(GET_PHOTOS_ENDPOINT)
   fetchedData = await fetchedData.json()
-  return fetchedData.photoset.photo.reverse().map(({farm, server, id, secret, title, url_o, height_o, width_o, datetaken}) => ({
-    id,
-    title,
-    mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
-    width: width_o,
-    height: height_o,
-    oUrl: url_o,
-    datetaken
-  }))
+  return {
+    photos: fetchedData.photoset.photo.reverse().map(({farm, server, id, secret, title, url_o, height_o, width_o, datetaken}) => ({
+      id,
+      title,
+      mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
+      width: width_o,
+      height: height_o,
+      oUrl: url_o,
+      datetaken
+    })),
+    pageNum: lastPageNum
+  }
 }
 
 export async function flickrVideos() {

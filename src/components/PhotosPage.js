@@ -16,9 +16,16 @@ export class PhotosPage extends Component {
     this.props.dispatch(searchImagesAction())
   }
 
-  render() {
-    const {images, imagesError} = this.props
+  getScrollPercent = () => (
+    (document.documentElement.scrollTop || document.body.scrollTop)
+    / ( (document.documentElement.scrollHeight || document.body.scrollHeight)
+      - document.documentElement.clientHeight) * 100
+  )
 
+
+  render() {
+    let {pageNum} = this.props
+    const {images, imagesError} = this.props
     const config = {
       containerWidth: window.innerWidth,
       containerPadding: {
@@ -28,15 +35,20 @@ export class PhotosPage extends Component {
         left: 14
       }
     }
-
-    const sizes = images ? images.map((image) => {
-      return {
+    const sizes = images ? images.map((image) => {return {
         width: image.width,
         height: image.height
-      }
-    }) : []
-
+      }}) : []
     const geometry = justifiedLayout(sizes, config)
+
+    window.onscroll = () => {
+      if (this.getScrollPercent() > 98 && pageNum > 1) {
+        setTimeout(() => {
+          this.props.dispatch(searchImagesAction(--pageNum))
+        }, 300)
+      }
+    }
+
     return (
       <div>
         {!imagesError ?
@@ -76,7 +88,8 @@ PhotosPage.propTypes = {
 }
 
 const mapStateToProps = ({images, error}) => ({
-  images: images[0],
+  images: images.photos,
+  pageNum: images.pageNum,
   imagesError: error
 })
 

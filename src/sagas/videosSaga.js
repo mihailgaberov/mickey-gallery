@@ -13,7 +13,6 @@ export default function* videosSaga() {
     yield all(
       [
         put({type: types.FLICKR_VIDEOS_SUCCESS, videos}),
-        put({type: types.SELECTED_VIDEO, video: videos[0]})
       ]
     )
   } catch (error) {

@@ -5,15 +5,14 @@ import { put, call, all } from 'redux-saga/effects'
 import { flickrImages } from '../API/api'
 import * as types from '../constants/actionTypes'
 
-export default function* imagesSaga() {
+export default function* imagesSaga(arg) {
+  const reducedByScrollPageNum = arg.pageNum
   try {
-    const {images} = yield all({
-      images: call(flickrImages)
-    })
+    const {photos, pageNum} = yield call(flickrImages, reducedByScrollPageNum)
+
     yield all(
       [
-        put({type: types.FLICKR_IMAGES_SUCCESS, images}),
-        put({type: types.SELECTED_IMAGE, image: images[0]})
+        put({type: types.FLICKR_IMAGES_SUCCESS, images: {photos, pageNum: reducedByScrollPageNum || pageNum}})
       ]
     )
   } catch (error) {
