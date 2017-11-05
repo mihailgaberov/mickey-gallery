@@ -12,7 +12,8 @@ export default function* imagesSaga(arg) {
 
     yield all(
       [
-        put({type: types.FLICKR_IMAGES_SUCCESS, images: {photos, pageNum: reducedByScrollPageNum || pageNum}})
+        put({type: types.FLICKR_IMAGES_SUCCESS, images: photos}),
+        put({type: types.PAGES_COUNT, pageNum: reducedByScrollPageNum || pageNum})
       ]
     )
   } catch (error) {

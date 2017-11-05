@@ -1,7 +1,9 @@
-/**
- * Created by Mihail on 1/7/2017.
- */
+import { Map } from 'immutable'
+
 export default {
-	images: {},
+	images: Map({
+    photos: [],
+    pageNum: 1
+  }),
 	videos: []
 }

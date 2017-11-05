@@ -12,7 +12,7 @@ export async function flickrImages(pageNum) {
 
   let fetchedInfo = await fetch(PHOTOSET_INFO_ENDPOINT)
   fetchedInfo = await fetchedInfo.json()
-  const lastPageNum = Math.ceil(fetchedInfo.photoset.count_photos / 100) || 1
+  const lastPageNum = Math.ceil(fetchedInfo.photoset.count_photos / 3) || 1
 
   const page = pageNum !== undefined ? pageNum : lastPageNum
 
@@ -20,7 +20,7 @@ export async function flickrImages(pageNum) {
 	&api_key=${REACT_APP_FLICKR_API_KEY}
 	&format=json
 	&nojsoncallback=1
-	&per_page=100
+	&per_page=3
 	&page=${page}
 	&user_id=${REACT_APP_FLICKR_USER_ID}
 	&photoset_id=${REACT_APP_FLICKR_PHOTOSET_ID}

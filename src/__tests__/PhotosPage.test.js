@@ -1,10 +1,10 @@
-import React from 'react'
 import { shallow } from 'enzyme'
-import { PhotosPage } from '../components/PhotosPage'
+import React from 'react'
 import LazyLoad from 'react-lazyload'
-import SpinnerContainer from '../components/StyledComponents/SpinnerContainer'
-import Spinner from '../components/StyledComponents/Spinner'
 import ErrorMsg from '../components/ErrorMsg'
+import { PhotosPage } from '../components/PhotosPage'
+import Spinner from '../components/StyledComponents/Spinner'
+import SpinnerContainer from '../components/StyledComponents/SpinnerContainer'
 
 const setup = (images, error) => {
   const props = {
@@ -15,12 +15,12 @@ const setup = (images, error) => {
   }
 
   const Wrapper = shallow(<PhotosPage {...props} />)
-  return { Wrapper, props }
+  return {Wrapper, props}
 }
 
 describe('PhotosPage component', () => {
   it('should render self and sub components', () => {
-    const { Wrapper } = setup([{ id: 1, mediaUrl: 'test image url', width: 320, height: 220 }])
+    const {Wrapper} = setup([{id: 1, mediaUrl: 'test image url', width: 320, height: 220}])
 
     expect(Wrapper.find('div').length).toEqual(1)
     expect(Wrapper.find('img').length).toEqual(1)
@@ -28,14 +28,14 @@ describe('PhotosPage component', () => {
   })
 
   it('should render the loading animation when there is no data', () => {
-    const { Wrapper } = setup([])
+    const {Wrapper} = setup([])
 
     expect(Wrapper.find(SpinnerContainer).length).toEqual(1)
     expect(Wrapper.find(Spinner).length).toEqual(1)
   })
 
   it('should show error message if any errors occurred', () => {
-    const { Wrapper } = setup([], 'error')
+    const {Wrapper} = setup([], 'error')
     expect(Wrapper.find(ErrorMsg).length).toEqual(1)
   })
 })

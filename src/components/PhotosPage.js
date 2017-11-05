@@ -1,13 +1,14 @@
+import justifiedLayout from 'justified-layout'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import LazyLoad from 'react-lazyload'
 import { connect } from 'react-redux'
 import { searchImagesAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
 import Spinner from '../components/StyledComponents/Spinner'
+import { getPageNum, getPhotos } from '../selectors/images'
 import '../styles/style.css'
-import justifiedLayout from 'justified-layout'
 import MainContainer from './StyledComponents/MainContainer'
-import LazyLoad from 'react-lazyload'
 import SpinnerContainer from './StyledComponents/SpinnerContainer'
 
 export class PhotosPage extends Component {
@@ -22,6 +23,16 @@ export class PhotosPage extends Component {
       - document.documentElement.clientHeight) * 100
   )
 
+  fetchNewDataChunk = () => {
+    let executed = false
+    return (pageNum) => {
+      if (!executed) {
+        executed = true
+        this.props.dispatch(searchImagesAction(--pageNum))
+      }
+    }
+  }
+
 
   render() {
     let {pageNum} = this.props
@@ -35,18 +46,17 @@ export class PhotosPage extends Component {
         left: 14
       }
     }
-    const sizes = images ? images.map((image) => {return {
+    const sizes = images ? images.map((image) => {
+      return {
         width: image.width,
         height: image.height
-      }}) : []
+      }
+    }) : []
     const geometry = justifiedLayout(sizes, config)
 
     window.onscroll = () => {
       if (this.getScrollPercent() > 98 && pageNum > 1) {
-        setTimeout(() => {
-          console.log('>>> pageNum: ', pageNum)
-          this.props.dispatch(searchImagesAction(--pageNum))
-        }, 300)
+        this.fetchNewDataChunk()(pageNum)
       }
     }
 
@@ -83,14 +93,17 @@ export class PhotosPage extends Component {
 }
 
 PhotosPage.propTypes = {
-  images: PropTypes.array,
+  images:  PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   dispatch: PropTypes.func.isRequired,
   imagesError: PropTypes.string
 }
 
 const mapStateToProps = ({images, error}) => ({
-  images: images.photos,
-  pageNum: images.pageNum,
+  images: getPhotos(images),
+  pageNum: getPageNum(images),
   imagesError: error
 })
 
