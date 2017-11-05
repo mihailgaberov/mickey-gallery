@@ -1,12 +1,11 @@
 /**
  * Created by mgab on 29/03/2017.
  */
-import expect from 'expect'
-import imageReducer from '../src/reducers/imageReducer'
-import * as types from '../src/constants/actionTypes'
+import imageReducer from '../reducers/imageReducer'
+import * as types from '../constants/actionTypes'
 
 
-describe('Test for Image Reducer', () => {
+describe('imageRecuder', () => {
   it('should return the initial state', () => {
     expect(imageReducer(undefined, {})).toEqual({})
   })

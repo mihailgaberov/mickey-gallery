@@ -1,16 +1,12 @@
-/**
- * Created by mgab on 29/03/2017.
- */
 import React from 'react'
-import expect from 'expect'
 import configureMockStore from 'redux-mock-store'
 import createSagaMiddleware from 'redux-saga'
-import { searchImagesAction } from '../src/actions/mediaActions'
+import { searchImagesAction } from '../actions/mediaActions'
 
 const sagaMiddleware = createSagaMiddleware()
 const mockStore = configureMockStore([sagaMiddleware])
 
-describe('Test Store', () => {
+describe('Store', () => {
   it('should return dispatch action to the api', () => {
     const store = mockStore({})
     const expectedValue = {

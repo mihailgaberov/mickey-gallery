@@ -1,18 +1,16 @@
 import React from 'react'
-import expect from 'expect'
 import { shallow } from 'enzyme'
-import { VideosPage } from '../src/components/VideosPage'
+import { VideosPage } from '../components/VideosPage'
 import LazyLoad from 'react-lazyload'
-import SpinnerContainer from '../src/components/StyledComponents/SpinnerContainer'
-import Spinner from '../src/components/StyledComponents/Spinner'
-import ErrorMsg from '../src/components/ErrorMsg'
+import SpinnerContainer from '../components/StyledComponents/SpinnerContainer'
+import Spinner from '../components/StyledComponents/Spinner'
+import ErrorMsg from '../components/ErrorMsg'
 
 
 const setup = (videos, error) => {
   const props = {
-    handleSearch: expect.createSpy(),
-    dispatch: expect.createSpy(),
-    ref: expect.createSpy(),
+    handleSearch: jest.fn(),
+    dispatch: jest.fn(),
     videos: videos,
     videosError: error
   }
@@ -21,7 +19,7 @@ const setup = (videos, error) => {
   return {Wrapper, props}
 }
 
-describe('Test for VideosPage', () => {
+describe('VideosPage component', () => {
   it('should render self and sub components', () => {
     const {Wrapper} = setup([{id: 1, mediaUrl: 'test image url', width: 320, height: 220}])
 

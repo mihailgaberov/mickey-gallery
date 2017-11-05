@@ -1,12 +1,12 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Navigation from '../src/components/StyledComponents/Navigation'
+import Navigation from '../components/StyledComponents/Navigation'
 
 const setup = () => {
   return shallow(<Navigation />)
 }
 
-describe('Navigation tests', () => {
+describe('Navigation component', () => {
 
   it('should render itself', () => {
     const wrapper = setup()

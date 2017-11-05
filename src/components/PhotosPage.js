@@ -44,6 +44,7 @@ export class PhotosPage extends Component {
     window.onscroll = () => {
       if (this.getScrollPercent() > 98 && pageNum > 1) {
         setTimeout(() => {
+          console.log('>>> pageNum: ', pageNum)
           this.props.dispatch(searchImagesAction(--pageNum))
         }, 300)
       }

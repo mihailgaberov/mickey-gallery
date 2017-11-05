@@ -1,10 +1,9 @@
-import expect from 'expect'
 import { put, call, all } from 'redux-saga/effects'
-import videoSaga from '../src/sagas/videosSaga'
-import { flickrVideos } from '../src/Api/api'
+import videoSaga from '../sagas/videosSaga'
+import { flickrVideos } from '../API/api'
 
 
-describe('Test for Video Saga', () => {
+describe('videoSaga', () => {
   const gen = videoSaga()
 
   it('should call Flickr API', () => {

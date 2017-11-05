@@ -1,11 +1,10 @@
 import { shallow } from 'enzyme'
-import expect from 'expect'
 import React from 'react'
-import App from '../src/components/App'
+import App from '../components/App'
 
 
-describe('Test App', () => {
-  const props = ['']
+describe('App component', () => {
+  const props = {}
   const wrapper = shallow(<App children={props}/>)
 
   it('should render itself', () => {

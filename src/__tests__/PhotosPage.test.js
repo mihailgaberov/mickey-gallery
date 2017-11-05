@@ -1,16 +1,15 @@
 import React from 'react'
-import expect from 'expect'
 import { shallow } from 'enzyme'
-import { PhotosPage } from '../src/components/PhotosPage'
+import { PhotosPage } from '../components/PhotosPage'
 import LazyLoad from 'react-lazyload'
-import SpinnerContainer from '../src/components/StyledComponents/SpinnerContainer'
-import Spinner from '../src/components/StyledComponents/Spinner'
-import ErrorMsg from '../src/components/ErrorMsg'
+import SpinnerContainer from '../components/StyledComponents/SpinnerContainer'
+import Spinner from '../components/StyledComponents/Spinner'
+import ErrorMsg from '../components/ErrorMsg'
 
 const setup = (images, error) => {
   const props = {
-    handleSearch: expect.createSpy(),
-    dispatch: expect.createSpy(),
+    handleSearch: jest.fn(),
+    dispatch: jest.fn(),
     images: images,
     imagesError: error
   }
@@ -19,7 +18,7 @@ const setup = (images, error) => {
   return { Wrapper, props }
 }
 
-describe('Test for PhotosPage', () => {
+describe('PhotosPage component', () => {
   it('should render self and sub components', () => {
     const { Wrapper } = setup([{ id: 1, mediaUrl: 'test image url', width: 320, height: 220 }])
 

@@ -1,11 +1,7 @@
-/**
- * Created by mgab on 29/03/2017.
- */
 import 'isomorphic-fetch'
-import expect from 'expect'
-import { flickrImages, flickrVideos } from '../src/API/api'
+import { flickrImages, flickrVideos } from '../API/api'
 
-describe('Test for Api', () => {
+describe('API', () => {
   it('should call Flickr images Api', () => {
     flickrImages().then((res) => {
       expect(res.length).toEqual(3)
