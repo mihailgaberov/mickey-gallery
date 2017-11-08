@@ -28,6 +28,7 @@ const Navigation = styled.ul`
       
       &.active {
         background-color: #111;
+        border-bottom: 3px solid #ccc;
       }
       
       i {
