@@ -29,6 +29,10 @@ const Navigation = styled.ul`
       &.active {
         background-color: #111;
       }
+      
+      i {
+        float: left;
+      }
     }  
   }
 `

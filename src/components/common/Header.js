@@ -7,8 +7,14 @@ import Navigation from '../styled-components/Navigation'
 
 const Header = () => (
 	<Navigation>
-    <li><IndexLink to="/" activeClassName="active">Photos</IndexLink></li>
-    <li><Link to="videos" activeClassName="active">Videos</Link></li>
+    <li>
+      <IndexLink to="/" activeClassName="active">
+        <i className="fa fa-camera-retro" aria-hidden="true"></i>Photos</IndexLink>
+    </li>
+    <li>
+      <Link to="videos" activeClassName="active">
+        <i className="fa fa-video-camera" aria-hidden="true"></i>Videos</Link>
+    </li>
 	</Navigation>
 )
 
