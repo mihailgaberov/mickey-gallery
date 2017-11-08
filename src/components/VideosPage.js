@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { searchVideosAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
-import Spinner from '../components/StyledComponents/Spinner'
+import Loader from './common/Loader'
 import '../styles/style.css'
 import justifiedLayout from 'justified-layout'
-import MainContainer from './StyledComponents/MainContainer'
+import MainContainer from './styled-components/MainContainer'
 import LazyLoad from 'react-lazyload'
-import SpinnerContainer from './StyledComponents/SpinnerContainer'
+import SpinnerContainer from './styled-components/SpinnerContainer'
 
 export class VideosPage extends Component {
 
@@ -54,7 +54,7 @@ export class VideosPage extends Component {
             </MainContainer>
             :
             <SpinnerContainer>
-              <Spinner/>
+              <Loader/>
             </SpinnerContainer>
           : <ErrorMsg>{videosError}</ErrorMsg>
         }

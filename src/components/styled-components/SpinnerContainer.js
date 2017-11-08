@@ -6,6 +6,10 @@ const SpinnerContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    i {
+      color: white;
+    }
 `
 
 export default SpinnerContainer

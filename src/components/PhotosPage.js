@@ -5,11 +5,11 @@ import LazyLoad from 'react-lazyload'
 import { connect } from 'react-redux'
 import { searchImagesAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
-import Spinner from '../components/StyledComponents/Spinner'
+import Loader from './common/Loader'
 import { getPageNum, getPhotos } from '../selectors/images'
 import '../styles/style.css'
-import MainContainer from './StyledComponents/MainContainer'
-import SpinnerContainer from './StyledComponents/SpinnerContainer'
+import MainContainer from './styled-components/MainContainer'
+import SpinnerContainer from './styled-components/SpinnerContainer'
 
 export class PhotosPage extends Component {
 
@@ -83,7 +83,7 @@ export class PhotosPage extends Component {
             </MainContainer>
             :
             <SpinnerContainer>
-              <Spinner/>
+              <Loader/>
             </SpinnerContainer>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }

@@ -3,8 +3,8 @@ import React from 'react'
 import LazyLoad from 'react-lazyload'
 import ErrorMsg from '../components/ErrorMsg'
 import { PhotosPage } from '../components/PhotosPage'
-import Spinner from '../components/StyledComponents/Spinner'
-import SpinnerContainer from '../components/StyledComponents/SpinnerContainer'
+import SpinnerContainer from '../components/styled-components/SpinnerContainer'
+import Loader from "../components/common/Loader"
 
 const setup = (images, error) => {
   const props = {
@@ -31,7 +31,7 @@ describe('PhotosPage component', () => {
     const {Wrapper} = setup([])
 
     expect(Wrapper.find(SpinnerContainer).length).toEqual(1)
-    expect(Wrapper.find(Spinner).length).toEqual(1)
+    expect(Wrapper.find(Loader).length).toEqual(1)
   })
 
   it('should show error message if any errors occurred', () => {

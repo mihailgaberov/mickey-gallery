@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Navigation from '../components/StyledComponents/Navigation'
+import Navigation from '../components/styled-components/Navigation'
 
 const setup = () => {
   return shallow(<Navigation />)
