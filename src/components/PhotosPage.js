@@ -68,16 +68,18 @@ export class PhotosPage extends Component {
               {images.map((image, i) => (
                 <LazyLoad key={i}
                           height={geometry.boxes[i].height}>
-                  <img src={image.mediaUrl}
-                       alt={image.datetaken}
-                       style={
-                         {
-                           width: `${geometry.boxes[i].width}px`,
-                           top: `${geometry.boxes[i].top}px`,
-                           left: `${geometry.boxes[i].left}px`
+                  <a href={image.oUrl}>
+                    <img src={image.mediaUrl}
+                         alt={image.datetaken}
+                         style={
+                           {
+                             width: `${geometry.boxes[i].width}px`,
+                             top: `${geometry.boxes[i].top}px`,
+                             left: `${geometry.boxes[i].left}px`
+                           }
                          }
-                       }
-                  />
+                    />
+                  </a>
                 </LazyLoad>
               ))}
             </MainContainer>
