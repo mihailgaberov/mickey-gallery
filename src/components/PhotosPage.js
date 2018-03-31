@@ -19,7 +19,7 @@ export class PhotosPage extends Component {
 
   getScrollPercent = () => (
     (document.documentElement.scrollTop || document.body.scrollTop)
-    / ( (document.documentElement.scrollHeight || document.body.scrollHeight)
+    / ((document.documentElement.scrollHeight || document.body.scrollHeight)
       - document.documentElement.clientHeight) * 100
   )
 
@@ -35,8 +35,8 @@ export class PhotosPage extends Component {
 
 
   render() {
-    let {pageNum} = this.props
-    const {images, imagesError} = this.props
+    let { pageNum } = this.props
+    const { images, imagesError } = this.props
     const config = {
       containerWidth: window.innerWidth,
       containerPadding: {
@@ -64,7 +64,7 @@ export class PhotosPage extends Component {
       <div>
         {!imagesError ?
           images && geometry.boxes.length > 0 ?
-            <MainContainer style={{height: geometry.containerHeight + 'px'}}>
+            <MainContainer style={{ height: geometry.containerHeight + 'px' }}>
               {images.map((image, i) => (
                 <LazyLoad key={i}
                           height={geometry.boxes[i].height}>
@@ -83,7 +83,7 @@ export class PhotosPage extends Component {
             </MainContainer>
             :
             <SpinnerContainer>
-              <Loader/>
+              <Spinner />
             </SpinnerContainer>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }
@@ -93,7 +93,7 @@ export class PhotosPage extends Component {
 }
 
 PhotosPage.propTypes = {
-  images:  PropTypes.oneOfType([
+  images: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object
   ]),
@@ -101,7 +101,7 @@ PhotosPage.propTypes = {
   imagesError: PropTypes.string
 }
 
-const mapStateToProps = ({images, error}) => ({
+const mapStateToProps = ({ images, error }) => ({
   images: getPhotos(images),
   pageNum: getPageNum(images),
   imagesError: error
