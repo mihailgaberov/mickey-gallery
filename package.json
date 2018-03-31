@@ -1,6 +1,6 @@
 {
   "name": "mickey-gallery",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": "Mihail Gaberov <mihail.gaberov@gmail.com> (http://mihail-gaberov.eu/)",
   "private": true,
   "devDependencies": {
