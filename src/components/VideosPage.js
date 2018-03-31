@@ -41,7 +41,6 @@ export class VideosPage extends Component {
                           height={geometry.boxes[i].height}>
                   <video controls
                          src={video.mediaUrl}
-                         alt={video.title}
                          style={
                            {
                              width: `${geometry.boxes[i].width}px`,
