@@ -83,7 +83,7 @@ export class PhotosPage extends Component {
             </MainContainer>
             :
             <SpinnerContainer>
-              <Spinner />
+              <Loader />
             </SpinnerContainer>
           : <ErrorMsg>{imagesError}</ErrorMsg>
         }
