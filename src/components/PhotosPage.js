@@ -71,6 +71,7 @@ export class PhotosPage extends Component {
                   <a href={image.oUrl}>
                     <img src={image.mediaUrl}
                          alt={image.datetaken}
+                         title={image.datetaken}
                          style={
                            {
                              width: `${geometry.boxes[i].width}px`,
@@ -79,6 +80,7 @@ export class PhotosPage extends Component {
                            }
                          }
                     />
+                    <h2><span>{image.datetaken}</span></h2>
                   </a>
                 </LazyLoad>
               ))}

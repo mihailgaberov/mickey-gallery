@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Navigation = styled.ul`
   width: 100%;
+  z-index: 1;
   position: fixed;
   top: 0;
   overflow: hidden;
