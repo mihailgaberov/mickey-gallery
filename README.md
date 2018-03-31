@@ -26,10 +26,5 @@ To run the app, follow these steps.
   ```shell
   npm run test
   ```
-  
-7. To run the test watcher:
 
-  ```shell
-  npm run test:watch
-  ```
 8. Browse to [http://localhost:3000](http://localhost:3000) to see the app.
