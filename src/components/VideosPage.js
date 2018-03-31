@@ -39,15 +39,14 @@ export class VideosPage extends Component {
               {videos.map((video, i) => (
                 <LazyLoad key={i}
                           height={geometry.boxes[i].height}>
-                  <video controls
-                         src={video.mediaUrl}
-                         style={
-                           {
-                             width: `${geometry.boxes[i].width}px`,
-                             top: `${geometry.boxes[i].top}px`,
-                             left: `${geometry.boxes[i].left}px`
-                           }}
-                  />
+                  <video controls style={
+                    {
+                      width: `${geometry.boxes[i].width}px`,
+                      top: `${geometry.boxes[i].top}px`,
+                      left: `${geometry.boxes[i].left}px`
+                    }}>
+                    <source src={video.mediaUrl} type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"/>
+                  </video>
                 </LazyLoad>
               ))}
             </MainContainer>
