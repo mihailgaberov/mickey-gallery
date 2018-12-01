@@ -1,14 +1,17 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import justifiedLayout from 'justified-layout'
+import LazyLoad from 'react-lazyload'
 import { connect } from 'react-redux'
+import { Player } from 'video-react'
 import { searchVideosAction } from '../actions/mediaActions'
 import ErrorMsg from '../components/ErrorMsg'
-import Loader from './common/Loader'
 import '../styles/style.css'
-import justifiedLayout from 'justified-layout'
+import Loader from './common/Loader'
 import MainContainer from './styled-components/MainContainer'
-import LazyLoad from 'react-lazyload'
 import SpinnerContainer from './styled-components/SpinnerContainer'
+import "../../node_modules/video-react/dist/video-react.css"
+
 
 export class VideosPage extends Component {
 
@@ -39,14 +42,17 @@ export class VideosPage extends Component {
               {videos.map((video, i) => (
                 <LazyLoad key={i}
                           height={geometry.boxes[i].height}>
-                  <video controls style={
-                    {
-                      width: `${geometry.boxes[i].width}px`,
-                      top: `${geometry.boxes[i].top}px`,
-                      left: `${geometry.boxes[i].left}px`
-                    }}>
-                    <source src={video.mediaUrl} type="video/mp4; codecs=avc1.42E01E,mp4a.40.2"/>
-                  </video>
+                  <Player
+                    style={
+                      {
+                        width: `${geometry.boxes[i].width}px`,
+                        top: `${geometry.boxes[i].top}px`,
+                        left: `${geometry.boxes[i].left}px`
+                      }}
+                    playsInline
+                  >
+                    <source src={video.mediaUrl} />
+                  </Player>
                 </LazyLoad>
               ))}
             </MainContainer>
