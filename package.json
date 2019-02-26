@@ -41,7 +41,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
-    "deploy": "npm install -g pushstate-server && pushstate-server build"
+    "deploy": "npm install -g pushstate-server && pushstate-server build",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "browserslist": [
     ">0.2%",
