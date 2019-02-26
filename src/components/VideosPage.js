@@ -10,7 +10,7 @@ import '../styles/style.css'
 import Loader from './common/Loader'
 import MainContainer from './styled-components/MainContainer'
 import SpinnerContainer from './styled-components/SpinnerContainer'
-import "../../node_modules/video-react/dist/video-react.css"
+import '../../node_modules/video-react/dist/video-react.css'
 
 
 export class VideosPage extends Component {
@@ -20,7 +20,7 @@ export class VideosPage extends Component {
   }
 
   render() {
-    const {videos, videosError} = this.props
+    const { videos, videosError } = this.props
     const config = {
       containerWidth: window.innerWidth,
       forceAspectRatio: 1,
@@ -38,7 +38,7 @@ export class VideosPage extends Component {
       <div>
         {!videosError ?
           videos && geometry.boxes.length > 0 ?
-            <MainContainer style={{height: geometry.containerHeight + 'px'}}>
+            <MainContainer style={{ height: geometry.containerHeight + 'px' }}>
               {videos.map((video, i) => (
                 <LazyLoad key={i}
                           height={geometry.boxes[i].height}>
@@ -51,7 +51,7 @@ export class VideosPage extends Component {
                       }}
                     playsInline
                   >
-                    <source src={video.mediaUrl} />
+                    <source src={video.mediaUrl}/>
                   </Player>
                 </LazyLoad>
               ))}
@@ -73,7 +73,7 @@ VideosPage.propTypes = {
   videosError: PropTypes.string
 }
 
-const mapStateToProps = ({videos, error}) => ({
+const mapStateToProps = ({ videos, error }) => ({
   videos: videos[0],
   videosError: error
 })
