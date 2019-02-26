@@ -25,7 +25,6 @@
     "isomorphic-fetch": "^2.2.1",
     "justified-layout": "^2.1.0",
     "prop-types": "^15.5.10",
-    "pushstate-server": "^3.1.0",
     "react": "16.0.0",
     "react-dom": "^16.8.3",
     "react-lazyload": "^2.3.0",
@@ -40,8 +39,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build": "react-scripts build",
-    "deploy": "npm install -g pushstate-server && pushstate-server build"
+    "build": "react-scripts build"
   },
   "browserslist": [
     ">0.2%",
