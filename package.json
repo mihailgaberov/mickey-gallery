@@ -39,7 +39,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "deploy": "npm i -g serve && serve -s build"
   },
   "browserslist": [
     ">0.2%",
