@@ -28,3 +28,13 @@ To run the app, follow these steps.
   ```
 
 8. Browse to [http://localhost:3000](http://localhost:3000) to see the app.
+
+9. To build and deploy to Heroku:
+
+```shell
+npm run build
+```
+
+```shell
+git push heroku master
+```
