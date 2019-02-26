@@ -13,9 +13,9 @@
     "ignore-styles": "^5.0.1",
     "immutable": "^3.8.2",
     "jest-enzyme": "^4.0.1",
-    "mocha": "^3.2.0",
+    "mocha": "^6.0.2",
     "nock": "^9.0.10",
-    "react-scripts": "^1.0.10",
+    "react-scripts": "^2.1.5",
     "redux-mock-store": "^1.2.2",
     "styled-components": "^2.2.1"
   },
@@ -42,5 +42,11 @@
     "eject": "react-scripts eject",
     "build": "react-scripts build",
     "deploy": "npm install -g pushstate-server && pushstate-server build"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
